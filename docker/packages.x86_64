@@ -1,0 +1,16 @@
+amd-ucode
+base
+linux-lts
+linux-firmware
+gptfdisk
+mkinitcpio
+mkinitcpio-archiso
+python
+pv
+arch-install-scripts
+reflector
+btrfs-progs
+dosfstools
+iwd
+man-db
+nano
