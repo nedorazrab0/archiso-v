@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Build an archiso
-set -ex
+set -x
 readonly conf='/baseline'
 readonly path='/docker'
 
@@ -35,6 +35,7 @@ echo 'root:x:0:0:root:/root:/usr/bin/bash' \
 echo 'root::1::::::' \
   > "${conf}/airootfs/etc/shadow"
 
-ls -lh "${conf}/airootfs"
 echo '- Building archiso...'
 mkarchiso -v -w /build "${conf}"
+
+ls -lh "${conf}/airootfs"
