@@ -21,7 +21,8 @@ cp "${path}/ntp.conf" "${conf}/airootfs/etc/systemd/timesyncd.conf.d"
 cp "${path}/reflector.conf" "${conf}/airootfs/etc/xdg/reflector"
 
 sed "s/NAME/${name}/" "${path}/profiledef.sh" > "${conf}/profiledef.sh"
-cat "${path}/20-wired.network" > "${conf}/airootfs/etc/systemd/network/20-ethernet.network"
+cat "${path}/20-wired.network" \
+  > "${conf}/airootfs/etc/systemd/network/20-ethernet.network"
 cat "${path}/arch-lts.conf" \
   > "${conf}/efiboot/loader/entries/01-archiso-x86_64-linux.conf"
 cat "${path}/linux.preset" \
