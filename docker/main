@@ -38,4 +38,4 @@ echo 'root::1::::::' \
   > "${conf}/airootfs/etc/shadow"
 
 echo '- Building archiso...'
-mkarchiso -v -w /build "${conf}"
+mkarchiso -w /build "${conf}"
