@@ -1,0 +1,26 @@
+name: rls
+on:
+  - workflow_dispath
+  - schedule:
+    cron:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+     - name: ckout
+       uses: actions/checkout@v4
+     - name: dc
+       run: |
+         docker pull archlinux
+         docker run --name archiso -dt --tmpfs '/hui:noatime,size=4G,exec' --privileged archlinux:latest
+         docker cp ./docker archiso:/
+         docker exec archiso bash ./docker/main
+         docker cp archiso:/out/archiso-v-x86_64.iso /dev/shm
+
+     - name: rls
+       run: |
+         gh release delete iso --cleanup-tag -y || true
+         gh release create iso /dev/shm/archiso-v-x86_64.iso
+       env:
+         GH_TOKEN: ${{ github.token }}
