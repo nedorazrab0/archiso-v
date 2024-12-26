@@ -13,6 +13,7 @@ jobs:
        run: |
          docker pull archlinux
          docker run --name archiso -dt --tmpfs '/build:noatime,size=4G,exec' --privileged archlinux:latest
+         docker exec archiso ls /
          docker cp ./docker archiso:/
          docker exec archiso bash ./docker/main
          docker cp archiso:/out/archiso-v-x86_64.iso /dev/shm
