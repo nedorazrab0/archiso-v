@@ -22,11 +22,11 @@ jobs:
          docker cp archiso:/out/archiso-v-x86_64.iso /dev/shm
 
      - name: Calculating the hash
-       run: openssl sha256 /dev/shm/archiso-v-x86_64.iso  #| tee -a "${GITHUB_ENV}"
+       run: echo "sha=$(openssl sha256 /dev/shm/archiso-v-x86_64.iso)" | tee -a "${GITHUB_ENV}"
 
      - name: Releaseing
        run: |
          gh release delete iso --cleanup-tag -y || true
-         gh release create iso /dev/shm/archiso-v-x86_64.iso
+         echo "SHA256: \`${sha}\`" | gh release create iso /dev/shm/archiso-v-x86_64.iso -F -
        env:
          GH_TOKEN: ${{ github.token }}
