@@ -15,6 +15,7 @@ airootfs_image_tool_options=(
   '-Efragments,dedupe,force-inode-compact,ztailpacking'
   '-C262144'
   '--workers=0'
+  '-d9'
 )
 bootstrap_tarball_compression=('zstd' '-T0' '--ultra' '-20zc')
 file_permissions=(
