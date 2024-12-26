@@ -1,6 +1,8 @@
 name: rls
 on: workflow_dispatch
 # schedule
+permissions:
+  contents: write
 
 jobs:
   release:
