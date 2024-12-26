@@ -36,7 +36,9 @@ echo 'root:x:0:0:root:/root:/usr/bin/bash' \
 echo 'root::1::::::' \
   > "${conf}/airootfs/etc/shadow"
 
+ls -lh "/build"
+
 echo '- Building archiso...'
 mkarchiso -v -w /build "${conf}"
 
-ls -lh "${conf}/airootfs"
+ls -lh "/build"
