@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Build an archiso
-set -x
+set -e
 readonly conf='/baseline'
 readonly path='/docker'
 
@@ -10,7 +10,6 @@ name="ARCHISO-v$(date '+%d%m%y')"
 
 cd /
 cp -R "/usr/share/archiso/configs${conf}" /
-ls -lh /
 mkdir -p "${conf}/airootfs/etc/"{sysctl.d,xdg/reflector,udev/rules.d}
 mkdir -p "${conf}/airootfs/etc/systemd/timesyncd.conf.d"
 
@@ -36,9 +35,5 @@ echo 'root:x:0:0:root:/root:/usr/bin/bash' \
 echo 'root::1::::::' \
   > "${conf}/airootfs/etc/shadow"
 
-ls -lh "/build"
-
 echo '- Building archiso...'
-mkarchiso -v -w /build "${conf}"
-
-ls -lh "/build"
+mkarchiso -w /build "${conf}"
