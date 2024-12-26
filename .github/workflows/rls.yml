@@ -1,6 +1,7 @@
 name: rls
 on: workflow_dispatch
-# schedule
+#  schedule:
+#    - cron: "15 4 * * *"
 permissions:
   contents: write
 
@@ -19,6 +20,9 @@ jobs:
          docker cp ./docker archiso:/
          docker exec archiso bash ./docker/main
          docker cp archiso:/out/archiso-v-x86_64.iso /dev/shm
+
+     - name: Calculating the hash
+       run: openssl sha256 /dev/shm/archiso-v-x86_64.iso  #| tee -a "${GITHUB_ENV}"
 
      - name: Releaseing
        run: |
