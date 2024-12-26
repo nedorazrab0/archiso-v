@@ -30,6 +30,8 @@ cat "${path}/linux.preset" \
 
 echo "$name" \
   > "${conf}/airootfs/etc/hostname"
+echo 'editor no' \
+  "${conf}/efiboot/loader/loader.conf"
 echo 'root:x:0:0:root:/root:/usr/bin/bash' \
   > "${conf}/airootfs/etc/passwd"
 echo 'root::1::::::' \
