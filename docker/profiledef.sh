@@ -12,7 +12,7 @@ airootfs_image_type='erofs'
 #-zlzma,level=109,dictsize=8388608
 airootfs_image_tool_options=(
   '-zlz4hc,level=12'
-  '-Efragments-all,dedupe,force-inode-compact,ztailpacking'
+  '-Eall-fragments,dedupe,force-inode-compact,ztailpacking'
   '-C1048576'
   '--workers=0'
 )
