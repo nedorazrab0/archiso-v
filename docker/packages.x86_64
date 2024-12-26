@@ -1,6 +1,6 @@
 amd-ucode
 base
-linux-lts
+linux-zen
 linux-firmware
 gptfdisk
 mkinitcpio
