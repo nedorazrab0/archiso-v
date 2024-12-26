@@ -11,10 +11,11 @@ pacman_conf="pacman.conf"
 airootfs_image_type='erofs'
 #-zlzma,level=109,dictsize=8388608
 airootfs_image_tool_options=(
-  '-zlz4hc,level=12'
+  '-zzstd,level=20,dictsize=1048576'
   '-Efragments,dedupe,force-inode-compact,ztailpacking'
   '-C262144'
-  '--workers=0'
+  '--workers=4'
+  '-T0'
 )
 bootstrap_tarball_compression=('zstd' '-T0' '--ultra' '-20zc')
 file_permissions=(
