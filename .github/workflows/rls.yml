@@ -1,5 +1,5 @@
 name: rls
-on: workflow_discpatch
+on: workflow_dispatch
 #  schedule:
 #    - cron: "15 4 * * *"
 permissions:
