@@ -10,7 +10,7 @@ arch='x86_64'
 pacman_conf="pacman.conf"
 airootfs_image_type='erofs'
 airootfs_image_tool_options=(
-  '-zzstd,level=3,dictsize=1048576'
+  '-zzstd,level=20,dictsize=1048576'
   '-Efragments,dedupe,force-inode-compact,ztailpacking'
   '-C262144'
   '--workers=4'
