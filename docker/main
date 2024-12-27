@@ -29,6 +29,9 @@ cat "${path}/arch-lts.conf" \
   > "${conf}/efiboot/loader/entries/01-archiso-x86_64-linux.conf"
 cat "${path}/linux.preset" \
   > "${conf}/airootfs/etc/mkinitcpio.d/linux.preset"
+cat "${path}/pacman.conf" \
+  > "${conf}/pacman.conf"
+
 
 echo "$name" \
   > "${conf}/airootfs/etc/hostname"
