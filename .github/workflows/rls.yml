@@ -1,7 +1,7 @@
 name: rls
-on:
-  schedule:
-    - cron: "15 4 * * *"
+on: workflow_discpatch
+#  schedule:
+#    - cron: "15 4 * * *"
 permissions:
   contents: write
 
@@ -15,18 +15,18 @@ jobs:
      - name: Building
        run: |
          docker pull archlinux
-         docker run --name archiso -dt --tmpfs '/build:noatime,size=4G,exec' --privileged archlinux:latest
-         docker exec archiso ls /
+         docker run --name archiso -dt --privileged archlinux:latest
          docker cp ./docker archiso:/
          docker exec archiso bash ./docker/main
-         docker cp archiso:/out/archiso-v-x86_64.iso /dev/shm
+         docker cp archiso:/out/archiso-v-x86_64.iso .
+         docker stop archiso
 
      - name: Calculating the hash
-       run: echo "sha=$(openssl sha256 /dev/shm/archiso-v-x86_64.iso | cut -d ' ' -f2)" | tee -a "${GITHUB_ENV}"
+       run: echo "sha=$(openssl sha256 ./archiso-v-x86_64.iso | cut -d ' ' -f2)" | tee -a "${GITHUB_ENV}"
 
      - name: Releaseing
        run: |
          gh release delete iso --cleanup-tag -y || true
-         echo "SHA256: \`${sha}\`" | gh release create iso /dev/shm/archiso-v-x86_64.iso -F -
+         echo "SHA256: \`${sha}\`" | gh release create iso ./archiso-v-x86_64.iso -F -
        env:
          GH_TOKEN: ${{ github.token }}
