@@ -26,7 +26,7 @@ cp "${path}/arch-install" "${conf}/usr/local/bin"
 sed "s/NAME/${name}/" "${path}/profiledef.sh" > "${conf}/profiledef.sh"
 cat "${path}/20-wired.network" \
   > "${conf}/airootfs/etc/systemd/network/20-ethernet.network"
-cat "${path}/arch-lts.conf" \
+cat "${path}/arch-zen.conf" \
   > "${conf}/efiboot/loader/entries/01-archiso-x86_64-linux.conf"
 cat "${path}/linux.preset" \
   > "${conf}/airootfs/etc/mkinitcpio.d/linux.preset"
