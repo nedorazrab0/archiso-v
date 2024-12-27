@@ -12,6 +12,7 @@ cd /
 cp -R "/usr/share/archiso/configs${conf}" /
 mkdir -p "${conf}/airootfs/etc/"{sysctl.d,xdg/reflector,udev/rules.d}
 mkdir -p "${conf}/airootfs/etc/systemd/timesyncd.conf.d"
+mkdir -p "${conf}/usr/local/bin"
 
 cp "${path}/packages.x86_64" "${conf}"
 cp "${path}/25-wireless.network" "${conf}/airootfs/etc/systemd/network"
@@ -19,6 +20,7 @@ cp "${path}/60-io.rules" "${conf}/airootfs/etc/udev/rules.d"
 cp "${path}/99-sysctl.conf" "${conf}/airootfs/etc/sysctl.d"
 cp "${path}/ntp.conf" "${conf}/airootfs/etc/systemd/timesyncd.conf.d"
 cp "${path}/reflector.conf" "${conf}/airootfs/etc/xdg/reflector"
+cp "${path}/arch-install" "${conf}/usr/local/bin"
 
 sed "s/NAME/${name}/" "${path}/profiledef.sh" > "${conf}/profiledef.sh"
 cat "${path}/20-wired.network" \
