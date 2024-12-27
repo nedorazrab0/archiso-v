@@ -14,7 +14,7 @@ jobs:
 
      - name: Building
        run: |
-         docker pull archlinux
+         docker pull archlinux:latest
          docker run --name archiso -dt --privileged archlinux:latest
          docker cp ./docker archiso:/
          docker exec archiso bash ./docker/main
