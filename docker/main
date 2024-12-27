@@ -4,6 +4,7 @@
 set -e
 readonly conf='/baseline'
 readonly path='/docker'
+readonly iso='/out/archiso-v-x86_64.iso'
 
 pacman -Sy archiso --noconfirm --disable-sandbox
 name="ARCHISO-v$(date '+%d%m%y')"
@@ -42,5 +43,10 @@ echo 'root:x:0:0:root:/root:/usr/bin/bash' \
 echo 'root::1::::::' \
   > "${conf}/airootfs/etc/shadow"
 
+chmod 555 "${conf}/usr/local/bin/arch-install"
+
 echo '- Building archiso...'
 mkarchiso "${conf}"
+echo '- FUCKING WONDERHOY'
+ls -lh "${iso}"
+file "${iso}"
