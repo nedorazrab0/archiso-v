@@ -7,7 +7,7 @@ install_dir='arch'
 buildmodes=('iso')
 bootmodes=('uefi-x64.systemd-boot.esp')
 arch='x86_64'
-pacman_conf="pacman.conf"
+pacman_conf='pacman.conf'
 airootfs_image_type='erofs'
 airootfs_image_tool_options=(
   '-zzstd,level=20,dictsize=1048576'
