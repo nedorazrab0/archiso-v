@@ -9,10 +9,10 @@ bootmodes=('uefi-x64.systemd-boot.esp')
 arch='x86_64'
 pacman_conf='pacman.conf'
 airootfs_image_type='erofs'
-#-zzstd,level=20,dictsize=1048576 '-C262144'
 airootfs_image_tool_options=(
-  '-zlz4'
+  '-zzstd,level=20,dictsize=1048576'
   '-Efragments,dedupe,force-inode-compact,ztailpacking'
+  '-C262144'
   '--workers=4'
   '-T0'
 )
