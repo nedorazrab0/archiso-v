@@ -22,7 +22,7 @@ jobs:
          docker cp archiso:/out/archiso-v-x86_64.iso .
          docker stop archiso
 
-     - name: Calculating the hash
+     - name: SHA calculation
        run: echo "sha=$(openssl sha256 ./archiso-v-x86_64.iso | cut -d ' ' -f2)" | tee -a "${GITHUB_ENV}"
 
      - name: Releaseing
