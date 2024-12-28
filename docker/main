@@ -21,18 +21,19 @@ cp "${path}/60-io.rules" "${conf}/airootfs/etc/udev/rules.d"
 cp "${path}/99-sysctl.conf" "${conf}/airootfs/etc/sysctl.d"
 cp "${path}/ntp.conf" "${conf}/airootfs/etc/systemd/timesyncd.conf.d"
 cp "${path}/reflector.conf" "${conf}/airootfs/etc/xdg/reflector"
-cp "${path}/arch-install" "${conf}/usr/local/bin"
+cp "${path}/arch-install" "${conf}/airootfs/usr/local/bin"
 
 sed "s/NAME/${name}/" "${path}/profiledef.sh" > "${conf}/profiledef.sh"
 cat "${path}/20-wired.network" \
   > "${conf}/airootfs/etc/systemd/network/20-ethernet.network"
+cat "${path}/dns.conf" \
+  > "${conf}/airootfs/etc/systemd/resolved.conf.d/archiso.conf"
 cat "${path}/arch-zen.conf" \
   > "${conf}/efiboot/loader/entries/01-archiso-x86_64-linux.conf"
 cat "${path}/linux.preset" \
   > "${conf}/airootfs/etc/mkinitcpio.d/linux.preset"
 cat "${path}/pacman.conf" \
   > "${conf}/pacman.conf"
-
 
 echo "$name" \
   > "${conf}/airootfs/etc/hostname"
@@ -43,7 +44,7 @@ echo 'root:x:0:0:root:/root:/usr/bin/bash' \
 echo 'root::1::::::' \
   > "${conf}/airootfs/etc/shadow"
 
-chmod 555 "${conf}/usr/local/bin/arch-install"
+chmod 555 "${conf}/airootfs/usr/local/bin/arch-install"
 
 echo '- Building archiso...'
 mkarchiso "${conf}"
