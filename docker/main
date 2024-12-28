@@ -44,8 +44,6 @@ echo 'root:x:0:0:root:/root:/usr/bin/bash' \
 echo 'root::1::::::' \
   > "${conf}/airootfs/etc/shadow"
 
-chmod 555 "${conf}/airootfs/usr/local/bin/arch-install"
-
 echo '- Building archiso...'
 mkarchiso "${conf}"
 echo '- FUCKING WONDERHOY'
