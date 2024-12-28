@@ -31,7 +31,7 @@ cat "${path}/dns.conf" \
 cat "${path}/arch-zen.conf" \
   > "${conf}/efiboot/loader/entries/01-archiso-x86_64-linux.conf"
 cat "${path}/linux.preset" \
-  > "${conf}/airootfs/etc/mkinitcpio.d/linux.preset"
+  > "${conf}/airootfs/etc/mkinitcpio.d/linux-zen.preset"
 cat "${path}/pacman.conf" \
   > "${conf}/pacman.conf"
 
