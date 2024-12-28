@@ -13,7 +13,7 @@ cd /
 cp -R "/usr/share/archiso/configs${conf}" /
 mkdir -p "${conf}/airootfs/etc/"{sysctl.d,xdg/reflector,udev/rules.d}
 mkdir -p "${conf}/airootfs/etc/systemd/timesyncd.conf.d"
-mkdir -p "${conf}/usr/local/bin"
+mkdir -p "${conf}/airootfs/usr/local/bin"
 
 cp "${path}/packages.x86_64" "${conf}"
 cp "${path}/25-wireless.network" "${conf}/airootfs/etc/systemd/network"
