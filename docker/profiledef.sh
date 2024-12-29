@@ -1,6 +1,6 @@
 iso_name='archiso'
 iso_label='NAME'
-iso_publisher='Arch Linux <https://archlinux.org>'
+iso_publisher='<https://github.com/nedorazrab0/archiso-v>'
 iso_application='Arch Linux baseline'
 iso_version='v'
 install_dir='arch'
