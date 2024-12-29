@@ -1,5 +1,6 @@
 amd-ucode
 base
+bash-completion
 linux-zen
 linux-firmware
 gptfdisk
