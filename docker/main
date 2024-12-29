@@ -6,7 +6,7 @@ readonly conf='/baseline'
 readonly path='/docker'
 
 cat "${path}/pacman.conf" > /etc/pacman.conf
-pacman -Sy archiso
+pacman -Sy archiso --ignore squashfs-tools --noconfirm
 name="ARCHISO-v$(date '+%d%m%y')"
 
 cd /
