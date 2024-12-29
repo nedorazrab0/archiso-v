@@ -4,8 +4,8 @@
 set -e
 readonly conf='/baseline'
 readonly path='/docker'
-readonly iso='/out/archiso-v-x86_64.iso'
 
+cat "${path}/pacman.conf" > /etc/pacman.conf
 pacman -Sy archiso --noconfirm --disable-sandbox
 name="ARCHISO-v$(date '+%d%m%y')"
 
@@ -13,6 +13,7 @@ cd /
 cp -R "/usr/share/archiso/configs${conf}" /
 mkdir -p "${conf}/airootfs/etc/"{sysctl.d,xdg/reflector,udev/rules.d}
 mkdir -p "${conf}/airootfs/etc/systemd/timesyncd.conf.d"
+mkdir -p "${conf}/airootfs/etc/systemd/system/multi-user.target.wants"
 mkdir -p "${conf}/airootfs/usr/local/bin"
 
 cp "${path}/packages.x86_64" "${conf}"
@@ -22,6 +23,12 @@ cp "${path}/99-sysctl.conf" "${conf}/airootfs/etc/sysctl.d"
 cp "${path}/ntp.conf" "${conf}/airootfs/etc/systemd/timesyncd.conf.d"
 cp "${path}/reflector.conf" "${conf}/airootfs/etc/xdg/reflector"
 cp "${path}/arch-install" "${conf}/airootfs/usr/local/bin"
+cp "${path}/linux-zen.preset" "${conf}/airootfs/etc/mkinitcpio.d"
+
+ln -sv /usr/lib/systemd/system/reflector.service \
+  "${conf}/airootfs/etc/systemd/system/multi-user.target.wants"
+ln -sv /usr/lib/systemd/system/iwd.service \
+  "${conf}/airootfs/etc/systemd/system/multi-user.target.wants"
 
 sed "s/NAME/${name}/" "${path}/profiledef.sh" > "${conf}/profiledef.sh"
 cat "${path}/20-wired.network" \
@@ -30,10 +37,7 @@ cat "${path}/dns.conf" \
   > "${conf}/airootfs/etc/systemd/resolved.conf.d/archiso.conf"
 cat "${path}/arch-zen.conf" \
   > "${conf}/efiboot/loader/entries/01-archiso-x86_64-linux.conf"
-cat "${path}/linux.preset" \
-  > "${conf}/airootfs/etc/mkinitcpio.d/linux-zen.preset"
-cat "${path}/pacman.conf" \
-  > "${conf}/pacman.conf"
+cat "${path}/pacman.conf" > "${conf}/pacman.conf"
 
 echo "$name" \
   > "${conf}/airootfs/etc/hostname"
@@ -46,6 +50,3 @@ echo 'root::1::::::' \
 
 echo '- Building archiso...'
 mkarchiso "${conf}"
-echo '- FUCKING WONDERHOY'
-ls -lh "${iso}"
-file "${iso}"
