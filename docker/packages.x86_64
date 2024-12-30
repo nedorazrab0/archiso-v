@@ -4,6 +4,7 @@ bash-completion
 linux-zen
 linux-firmware
 gptfdisk
+pigz
 mkinitcpio
 mkinitcpio-archiso
 python
@@ -17,3 +18,4 @@ iptables-nft
 mandoc
 less
 nano
+zram-generator
