@@ -27,13 +27,11 @@ cp "${path}/ntp.conf" "${conf}/airootfs/etc/systemd/timesyncd.conf.d"
 cp "${path}/reflector.conf" "${conf}/airootfs/etc/xdg/reflector"
 cp "${path}/arch-install" "${conf}/airootfs/usr/local/bin"
 cp "${path}/linux-zen.preset" "${conf}/airootfs/etc/mkinitcpio.d"
-cp "${path}/mke2fs.conf" "${conf}/etc"
 
 ln -sv /usr/lib/systemd/system/reflector.service \
   "${conf}/airootfs/etc/systemd/system/multi-user.target.wants"
 ln -sv /usr/lib/systemd/system/iwd.service \
   "${conf}/airootfs/etc/systemd/system/multi-user.target.wants"
-ln -sv mke2fs /sbin/mkfs.ext4nj
 
 sed "s/NAME/${name}/" "${path}/profiledef.sh" > "${conf}/profiledef.sh"
 cat "${path}/20-wired.network" \
