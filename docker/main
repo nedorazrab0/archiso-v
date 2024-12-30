@@ -13,9 +13,12 @@ cd /
 cp -R "/usr/share/archiso/configs${conf}" /
 mkdir -p "${conf}/airootfs/etc/"{sysctl.d,xdg/reflector,udev/rules.d}
 mkdir -p "${conf}/airootfs/etc/systemd/timesyncd.conf.d"
+mkdir -p "${conf}/airootfs/etc/systemd/zram-generator.conf.d"
 mkdir -p "${conf}/airootfs/etc/systemd/system/multi-user.target.wants"
 mkdir -p "${conf}/airootfs/usr/local/bin"
 
+cp "${path}/zram.conf" \
+  "${conf}/airootfs/etc/systemd/zram-generator.conf.d"
 cp "${path}/packages.x86_64" "${conf}"
 cp "${path}/25-wireless.network" "${conf}/airootfs/etc/systemd/network"
 cp "${path}/60-io.rules" "${conf}/airootfs/etc/udev/rules.d"
@@ -24,6 +27,7 @@ cp "${path}/ntp.conf" "${conf}/airootfs/etc/systemd/timesyncd.conf.d"
 cp "${path}/reflector.conf" "${conf}/airootfs/etc/xdg/reflector"
 cp "${path}/arch-install" "${conf}/airootfs/usr/local/bin"
 cp "${path}/linux-zen.preset" "${conf}/airootfs/etc/mkinitcpio.d"
+cp "${path}/mke2fs.conf" "${conf}/etc"
 
 ln -sv /usr/lib/systemd/system/reflector.service \
   "${conf}/airootfs/etc/systemd/system/multi-user.target.wants"
