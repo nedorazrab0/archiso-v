@@ -28,11 +28,6 @@ cp "${path}/reflector.conf" "${conf}/airootfs/etc/xdg/reflector"
 cp "${path}/arch-install" "${conf}/airootfs/usr/local/bin"
 cp "${path}/linux-zen.preset" "${conf}/airootfs/etc/mkinitcpio.d"
 
-ln -sv /usr/lib/systemd/system/reflector.service \
-  "${conf}/airootfs/etc/systemd/system/multi-user.target.wants"
-ln -sv /usr/lib/systemd/system/iwd.service \
-  "${conf}/airootfs/etc/systemd/system/multi-user.target.wants"
-
 sed "s/NAME/${name}/" "${path}/profiledef.sh" > "${conf}/profiledef.sh"
 cat "${path}/20-wired.network" \
   > "${conf}/airootfs/etc/systemd/network/20-ethernet.network"
