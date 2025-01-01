@@ -20,7 +20,7 @@ cp "${path}/zram.conf" \
   "${conf}/airootfs/etc/systemd/zram-generator.conf.d"
 cp "${path}/packages.x86_64" "${conf}"
 cp "${path}/25-wireless.network" "${conf}/airootfs/etc/systemd/network"
-cp "${path}/{60-io,50-sata}.rules "${conf}/airootfs/etc/udev/rules.d"
+cp "${path}/"{60-io,50-sata}.rules "${conf}/airootfs/etc/udev/rules.d"
 cp "${path}/99-sysctl.conf" "${conf}/airootfs/etc/sysctl.d"
 cp "${path}/ntp.conf" "${conf}/airootfs/etc/systemd/timesyncd.conf.d"
 cp "${path}/reflector.conf" "${conf}/airootfs/etc/xdg/reflector"
