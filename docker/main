@@ -12,8 +12,8 @@ name="ARCHISO-v$(date '+%d%m%y')"
 cd /
 cp -R "/usr/share/archiso/configs${conf}" /
 mkdir -p "${conf}/airootfs/etc/"{sysctl.d,xdg/reflector,udev/rules.d}
-mkdir -p "${conf}/airootfs/etc/systemd/timesyncd.conf.d"
-mkdir -p "${conf}/airootfs/etc/systemd/zram-generator.conf.d"
+mkdir -p "${conf}/airootfs/etc/systemd/"{timesyncd,journald}.conf.d
+mkdir -p "${conf}/airootfs/etc/systemd/"{zram-generator,system}.conf.d
 mkdir -p "${conf}/airootfs/etc/systemd/system/multi-user.target.wants"
 mkdir -p "${conf}/airootfs/usr/local/bin"
 
@@ -36,6 +36,17 @@ cat "${path}/dns.conf" \
 cat "${path}/arch-zen.conf" \
   > "${conf}/efiboot/loader/entries/01-archiso-x86_64-linux.conf"
 cat "${path}/pacman.conf" > "${conf}/pacman.conf"
+
+cat << EOF > "${conf}/airootfs/etc/systemd/journal.conf.d/size.conf"
+[Journal]
+SystemMaxUse=512K
+EOF
+
+cat << EOF > "${conf}/airootfs/etc/systemd/system.conf.d/timeout.conf"
+[Manager]
+DefaultTimeoutStartSec=15s
+DefaultTimeoutStopSec=2s
+EOF
 
 echo "$name" \
   > "${conf}/airootfs/etc/hostname"
