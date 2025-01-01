@@ -36,7 +36,7 @@ cat "${path}/arch-zen.conf" \
   > "${conf}/efiboot/loader/entries/01-archiso-x86_64-linux.conf"
 cat "${path}/pacman.conf" > "${conf}/pacman.conf"
 
-cat << EOF > "${conf}/airootfs/etc/systemd/journal.conf.d/size.conf"
+cat << EOF > "${conf}/airootfs/etc/systemd/journald.conf.d/size.conf"
 [Journal]
 SystemMaxUse=512K
 EOF
