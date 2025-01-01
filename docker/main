@@ -14,7 +14,6 @@ cp -R "/usr/share/archiso/configs${conf}" /
 mkdir -p "${conf}/airootfs/etc/"{sysctl.d,xdg/reflector,udev/rules.d}
 mkdir -p "${conf}/airootfs/etc/systemd/"{timesyncd,journald}.conf.d
 mkdir -p "${conf}/airootfs/etc/systemd/"{zram-generator,system}.conf.d
-mkdir -p "${conf}/airootfs/etc/systemd/system/multi-user.target.wants"
 mkdir -p "${conf}/airootfs/usr/local/bin"
 
 cp "${path}/zram.conf" \
