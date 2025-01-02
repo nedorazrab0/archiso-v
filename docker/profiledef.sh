@@ -20,5 +20,5 @@ bootstrap_tarball_compression=('zstd' '-T0' '--ultra' '-20zc')
 file_permissions=(
   ['/etc/shadow']='0:0:400'
   ['/usr/local/bin/arch-install']='0:0:555'
-  ['/usr/local/bin/mkfs.service.btrfs']='0:0:555'
+  ['/usr/local/bin/mkfs.service.zram']='0:0:555'
 )
