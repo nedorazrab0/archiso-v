@@ -24,7 +24,7 @@ cp "${path}/"{60-io,50-sata}.rules "${conf}/airootfs/etc/udev/rules.d"
 cp "${path}/99-sysctl.conf" "${conf}/airootfs/etc/sysctl.d"
 cp "${path}/ntp.conf" "${conf}/airootfs/etc/systemd/timesyncd.conf.d"
 cp "${path}/reflector.conf" "${conf}/airootfs/etc/xdg/reflector"
-cp "${path}/"{arch-install,mkfs.service.btrfs} \
+cp "${path}/"{arch-install,mkfs.service.zram} \
   "${conf}/airootfs/usr/local/bin"
 cp "${path}/linux-zen.preset" "${conf}/airootfs/etc/mkinitcpio.d"
 
