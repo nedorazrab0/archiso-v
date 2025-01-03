@@ -8,7 +8,6 @@ pigz
 mkinitcpio
 mkinitcpio-archiso
 python
-pv
 arch-install-scripts
 reflector
 btrfs-progs
