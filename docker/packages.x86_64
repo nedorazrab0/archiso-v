@@ -4,7 +4,6 @@ bash-completion
 linux-zen
 linux-firmware
 gptfdisk
-pigz
 mkinitcpio
 mkinitcpio-archiso
 python
