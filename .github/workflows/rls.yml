@@ -23,11 +23,14 @@ jobs:
          docker stop archiso
 
      - name: SHA calculation
-       run: echo "sha=$(openssl sha256 ./archiso-v-x86_64.iso | cut -d ' ' -f2)" | tee -a "${GITHUB_ENV}"
+       run: |
+         echo "sha=$(openssl sha256 ./archiso-v-x86_64.iso | cut -d ' ' -f2)" \
+           | tee -a "${GITHUB_ENV}"
 
      - name: Releaseing
        run: |
          gh release delete iso --cleanup-tag -y || true
-         echo "SHA256: \`${sha}\`" | gh release create iso ./archiso-v-x86_64.iso -F -
+         echo "SHA256: \`${sha}\`" \
+           | gh release create iso ./archiso-v-x86_64.iso -F -
        env:
          GH_TOKEN: ${{ github.token }}
