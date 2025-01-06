@@ -10,7 +10,7 @@ arch='x86_64'
 pacman_conf='pacman.conf'
 airootfs_image_type='erofs'
 airootfs_image_tool_options=(
-  '-zlzma,level=109,dictsize=8388608'
+  '-zlzma,level=106,dictsize=8388608'
   '-Efragments,dedupe,force-inode-compact,ztailpacking'
   '-C1048576'
   '-T0'
